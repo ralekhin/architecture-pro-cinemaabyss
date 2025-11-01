@@ -71,6 +71,7 @@ def _send(topic: str, payload: Dict[str, Any]):
         "payload": payload,
     }
     try:
+        producer.send(topic, event)
         logging.info(f"Produced topic {topic}: {event}")
         return {
             "status": "success",
