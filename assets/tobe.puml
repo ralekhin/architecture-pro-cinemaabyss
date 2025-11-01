@@ -1,0 +1,42 @@
+@startuml
+!include <C4/C4_Container>
+
+title CinemaAbyss
+
+Person(client, "Client", "мобильные устройства, ноутбуки, смарт ТВ")
+
+System_Boundary(system, "CinemaAbyss") {
+  Container(apigateway, "API Gateway", "kong")
+  Container(user, "Users", "golang", "Пользователи, авторизация, аутентификация")
+  ContainerDb(userdb, "Users DB", "postgresql")
+  Container(subs, "Subscribition", "golang", "Подписки")
+  ContainerDb(subsdb, "Subscribition DB", "postgresql")
+  Container(movie, "Movies", "golang", "Фильмы - метадата и стримминг")
+  ContainerDb(metadatadb, "Metadata DB", "postgresql")
+  ContainerDb(videodb, "Video Streaming Storage", "object")
+  Container(payment, "Payments", "golang", "Биллинг и платежи")
+  ContainerDb(paymentdb, "Payments DB", "postgresql")
+}
+
+System_Ext(reqsys, "Recommendation System", "Внешняя рекомендательная система")
+System_Ext(extpayment, "Payment Gateway", "Платежный шлюз")
+
+Rel(client, apigateway, "HTTPS")
+
+Rel(apigateway, user, "REST")
+Rel(apigateway, movie, "REST")
+Rel(apigateway, subs, "REST")
+Rel(apigateway, payment, "REST")
+
+Rel(subs, payment, "REST")
+
+Rel(payment, extpayment, "REST")
+Rel(movie, reqsys, "REST")
+
+Rel(user, userdb, "SQL")
+Rel(movie, metadatadb, "SQL")
+Rel(movie, videodb, "S3")
+Rel(subs, subsdb, "SQL")
+Rel(payment, paymentdb, "SQL")
+
+@enduml
