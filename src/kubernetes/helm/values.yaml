@@ -54,7 +54,7 @@ proxyService:
   enabled: true
   image:
     repository: ghcr.io/ralekhin/architecture-pro-cinemaabyss/proxy-service
-    tag: sha-7653b54@sha256:ca03e3aac0a38ae89d955a2908d9d2ff78a0afba0d22bd87b9c8ced62d074c3a
+    tag: sha-41b6833@sha256:6a8cce3897907083570fc8ff7ad56de1014b317b24284d04cc5a6290040e256b
     pullPolicy: Always
   replicas: 1
   resources:
