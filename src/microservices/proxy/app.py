@@ -43,7 +43,7 @@ async def proxy(full_path: str, request: Request) -> Response:
 async def _response(request: Request, base_url: str) -> Response:
     url = httpx.URL(base_url + request.url.path)
     if request.url.query:
-        url = url.copy_with(query=request.url.query)
+        url = url.copy_with(query=request.url.query.encode('utf-8') if request.url.query else None)
 
     try:
         resp = await client.request(
