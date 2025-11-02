@@ -5,7 +5,7 @@ global:
 
 # Image pull secrets
 imagePullSecrets:
-  dockerconfigjson: ewoJImF1dGhzIjogewoJCSJnaGNyLmlvIjogewoJCQkiYXV0aCI6
+  dockerconfigjson: ewogICJhdXRocyI6IHsKICAgICJnaGNyLmlvIjogewogICAgICAidXNlcm5hbWUiOiAicmFsZWtoaW4iLAogICAgICAicGFzc3dvcmQiOiAiZ2hwX3NZWmxvQzh4czNXOHR3M0p4bFg0c1h4UlJGQ2dNYjQ4dnFrZCIsCiAgICAgICJzZXJ2ZXJhZGRyZXNzIjogImdoY3IuaW8iCiAgICB9CiAgfSwKICAiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKICAiY3VycmVudENvbnRleHQiOiAiZGVza3RvcC1saW51eCIsCiAgInBsdWdpbnMiOiB7CiAgICAiLXgtY2xpLWhpbnRzIjogewogICAgICAiZW5hYmxlZCI6ICJ0cnVlIgogICAgfQogIH0sCiAgImZlYXR1cmVzIjogewogICAgImhvb2tzIjogInRydWUiCiAgfQp9Cg==
 # Database configuration
 database:
   host: postgres
@@ -33,8 +33,8 @@ database:
 monolith:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/monolith
-    tag: latest
+    repository: ghcr.io/ralekhin/architecture-pro-cinemaabyss/monolith
+    tag: sha-7653b54@sha256:645f788c8dac512f4f7fad5ffa927cadafd67793f913a52765cfcc5c5dbf51d0
     pullPolicy: Always
   replicas: 1
   resources:
@@ -53,8 +53,8 @@ monolith:
 proxyService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/proxy-service
-    tag: latest
+    repository: ghcr.io/ralekhin/architecture-pro-cinemaabyss/proxy-service
+    tag: sha-41b6833@sha256:6a8cce3897907083570fc8ff7ad56de1014b317b24284d04cc5a6290040e256b
     pullPolicy: Always
   replicas: 1
   resources:
@@ -73,8 +73,8 @@ proxyService:
 moviesService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/movies-service
-    tag: latest
+    repository: ghcr.io/ralekhin/architecture-pro-cinemaabyss/movies-service
+    tag: sha-7653b54@sha256:3efa277a57be3b155d4061a6c7ce014a43fa5deb0f4bc6cf4e20f7474c144c2b
     pullPolicy: Always
   replicas: 1
   resources:
@@ -93,8 +93,8 @@ moviesService:
 eventsService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/events-service
-    tag: latest
+    repository: ghcr.io/ralekhin/architecture-pro-cinemaabyss/events-service
+    tag: sha-7653b54@sha256:fb407635fc8878191e119c66606cd02e8606e9e04859d6a8b54e883d68d781ae
     pullPolicy: Always
   replicas: 1
   resources:
@@ -143,7 +143,7 @@ kafka:
 zookeeper:
   enabled: true
   image:
-    repository: wurstmeister/zookeeper
+    repository: zookeeper
     tag: latest
     pullPolicy: IfNotPresent
   replicas: 1

@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: zookeeper
-        image: wurstmeister/zookeeper
+        image: zookeeper
         ports:
         - containerPort: 2181
           name: client
